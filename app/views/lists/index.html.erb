@@ -12,7 +12,7 @@
   <div class="cards">
     <% @lists.each do |list| %>
       <%= link_to list_path(list) do %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.url %>)">
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? list.photo.url : ''%>)">
           <h3><%= list.name %></h3>
         </div>
       <% end %>
