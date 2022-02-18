@@ -1,0 +1,22 @@
+<div class="home-banner">
+  <h1>Movies</h1>
+</div>
+
+<div class="container">
+
+  <div class="pt-2 pb-2">
+    <div class="d-flex justify-content-between">
+      <h2>My lists</h2>
+      <%= link_to 'Create a new list', new_list_path, class: 'btn btn-primary'%>
+    </div>
+  </div>
+  <div class="cards">
+    <% @lists.each do |list| %>
+      <%= link_to list_path(list) do %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.image_url %>)">
+          <%= list.name %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
