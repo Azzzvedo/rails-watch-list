@@ -4,6 +4,7 @@ require "open-uri"
 class ListsController < ApplicationController
   before_action :set_list, only: %i[show]
   def index
+    @list= List.new
     @lists = List.all
   end
 
@@ -29,6 +30,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name)
+    params.require(:list).permit(:name, :photo)
   end
 end

@@ -1,8 +1,8 @@
-<div class="home-banner">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://source.unsplash.com/J39X2xX_8CQ')">
   <h1>Movies</h1>
 </div>
 
-<div class="container">
+<div class="container align-items-center">
   <div class="pt-2 pb-2">
     <div class="d-flex justify-content-between">
       <h2>My lists</h2>
@@ -12,10 +12,19 @@
   <div class="cards">
     <% @lists.each do |list| %>
       <%= link_to list_path(list) do %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url()">
-          <%= list.name %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.url %>)">
+          <h3><%= list.name %></h3>
         </div>
       <% end %>
     <% end %>
   </div>
+
+  <div class="col-6 p-3">
+  <%= simple_form_for(@list) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :photo, as: :file %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
 </div>
