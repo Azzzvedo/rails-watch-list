@@ -14,22 +14,13 @@ class ListsController < ApplicationController
   end
 
   def create
-    @image_search = params[:image_search]
-    # @unsplash_json = image(@image_search)
-    @list = List.new()
-
+    @list = List.new(list_params)
     if @list.save
       redirect_to list_path(@list)
     else
       render :new
     end
   end
-
-  # def image(image_search)
-  #   @url = "https://api.unsplash.com/search/photos?page=1&per_page=10&query=#{image_search}&client_id=SYLNEOhroZr_ufWU1PgbMZuWjtGyH1WfdKuupbQdjlQ"
-  #   @unparsed_data = URI.open(url).read
-  #   JSON.parse(user_serialized)
-  # end
 
   private
 
@@ -38,6 +29,6 @@ class ListsController < ApplicationController
   end
 
   def list_params
-    params.require(:list).permit(:name, :image_url)
+    params.require(:list).permit(:name)
   end
 end
